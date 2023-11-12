@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text">
+<button class="btn">click</button>
+<h4></h4>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<!--<script>-->
+<!--    document.querySelector('.btn').onclick = (()=>{-->
+<!--        var value = document.querySelector('input').value;-->
+<!--        fetch("http://localhost:8080/hello?name=" + value)-->
+<!--            // .then(response=>response.text())-->
+<!--            // .then(lalala => {-->
+<!--            //     // console.log(value)-->
+<!--            //     document.querySelector('h4').innerHTML = lalala;-->
+<!--            // });-->
+<!--            .then(res=>console.log(res))-->
+
+<!--        // console.log(111)-->
+<!--    })-->
+<!--</script>-->
+<script>
+    document.querySelector('.btn').onclick = (()=>{
+        var value = document.querySelector('input').value;
+        axios.get(`http://localhost:8080/hello?name=${value}`)
+            .then(response => {
+                console.log(response)
+                document.querySelector('h4').innerHTML = response.data;
+            })
+    })
+</script>
+</html>
